@@ -25,7 +25,7 @@ module OpinionService
             yes_arguments.push(
                 title: li.search('h2').text,
                 text: li.search('p').text,
-                author: li.search('.qt a').text
+                author: li.search('.qt a').first.text.include?("\n") ? "" : li.search('.qt a').first.text
             )
           end
         end
@@ -35,7 +35,7 @@ module OpinionService
             no_arguments.push(
                 title: li.search('h2').text,
                 text: li.search('p').text,
-                author: li.search('.qt a').text
+                author: li.search('.qt a').first.text.include?("\n") ? "" : li.search('.qt a').first.text
             )
           end
         end
